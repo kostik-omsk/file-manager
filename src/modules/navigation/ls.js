@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
+import messageErrors from '../../utils/messageErrors.js';
 
 const getFileType = async (filePath) => {
   const stats = await fs.stat(filePath);
@@ -24,6 +25,6 @@ export async function ls(folderPath) {
 
     console.table(tableData);
   } catch (err) {
-    console.error('Error reading directory:', err);
+    messageErrors('Operation failed');
   }
 }
