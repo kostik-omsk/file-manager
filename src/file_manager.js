@@ -6,6 +6,7 @@ import { cd } from './modules/navigation/cd.js';
 import { up } from './modules/navigation/up.js';
 import currentDirectory from './utils/currentDirectory.js';
 import messageErrors from './utils/messageErrors.js';
+import cat from './modules/BasicOperationsFiles/cat.js';
 
 let baseDir = homedir();
 let __dirname = baseDir;
@@ -24,21 +25,27 @@ const commands = {
   cd: async (targetDir) => {
     __dirname = await cd(targetDir, __dirname);
   },
+  cat: (fileName) => cat(fileName, __dirname),
 };
 
 rl.on('line', async (input) => {
   const [command, ...args] = input.trim().split(' ');
 
   if (command in commands) {
-    if (args) {
-      const argument = args.join(' ');
-      commands[command](argument);
-    } else {
-      commands[command]();
+    try {
+      if (args) {
+        const argument = args.join(' ');
+        await commands[command](argument);
+      } else {
+        await commands[command]();
+      }
+    } catch (err) {
+      messageErrors('Operation failed');
     }
   } else {
     messageErrors('Invalid input');
   }
+  currentDirectory(__dirname);
 });
 
 rl.on('close', () => {
