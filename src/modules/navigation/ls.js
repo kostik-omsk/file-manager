@@ -7,6 +7,7 @@ const getFileType = async (filePath) => {
 };
 export async function ls(folderPath) {
   try {
+    await fs.access(folderPath);
     const files = await fs.readdir(folderPath);
     const tableData = await Promise.all(
       files.map(async (file) => ({
