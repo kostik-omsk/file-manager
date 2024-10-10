@@ -2,7 +2,7 @@ import { homedir } from 'os';
 import readline from 'readline/promises';
 import { getUserName, exitProgram, currentDirectory, messageErrors } from './utils/index.js';
 import { ls, up, cd } from './modules/navigation/index.js';
-import { cat, add } from './modules/BasicOperationsFiles/index.js';
+import { cat, add, rn } from './modules/BasicOperationsFiles/index.js';
 
 let baseDir = homedir();
 let __dirname = baseDir;
@@ -23,6 +23,7 @@ const commands = {
   },
   cat: (fileName) => cat(fileName, __dirname),
   add: (fileName) => add(fileName, __dirname),
+  rn: (pathFromTo) => rn(pathFromTo, __dirname),
 };
 
 rl.on('line', async (input) => {
