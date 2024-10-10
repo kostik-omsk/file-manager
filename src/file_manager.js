@@ -1,8 +1,8 @@
 import { homedir } from 'os';
 import readline from 'readline/promises';
-import { getUserName, exitProgram , currentDirectory, messageErrors } from './utils/index.js';
+import { getUserName, exitProgram, currentDirectory, messageErrors } from './utils/index.js';
 import { ls, up, cd } from './modules/navigation/index.js';
-import {cat} from './modules/BasicOperationsFiles/index.js';
+import { cat, add } from './modules/BasicOperationsFiles/index.js';
 
 let baseDir = homedir();
 let __dirname = baseDir;
@@ -22,6 +22,7 @@ const commands = {
     __dirname = await cd(targetDir, __dirname);
   },
   cat: (fileName) => cat(fileName, __dirname),
+  add: (fileName) => add(fileName, __dirname),
 };
 
 rl.on('line', async (input) => {
