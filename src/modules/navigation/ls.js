@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
-import messageErrors from '../../utils/messageErrors.js';
+import { messageErrors } from '../../utils/index.js';
 
 const getFileType = async (filePath) => {
   const stats = await fs.stat(filePath);

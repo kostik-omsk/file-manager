@@ -1,5 +1,5 @@
 import path from 'path';
-import messageErrors from '../../utils/messageErrors.js';
+import { messageErrors } from '../../utils/index.js';
 
 export function up(currentDir, baseDir) {
   const parentDir = path.dirname(currentDir);

@@ -1,12 +1,8 @@
 import { homedir } from 'os';
 import readline from 'readline/promises';
-import { getUserName, exitProgram } from './utils/userUtils.js';
-import { ls } from './modules/navigation/ls.js';
-import { cd } from './modules/navigation/cd.js';
-import { up } from './modules/navigation/up.js';
-import currentDirectory from './utils/currentDirectory.js';
-import messageErrors from './utils/messageErrors.js';
-import cat from './modules/BasicOperationsFiles/cat.js';
+import { getUserName, exitProgram , currentDirectory, messageErrors } from './utils/index.js';
+import { ls, up, cd } from './modules/navigation/index.js';
+import {cat} from './modules/BasicOperationsFiles/index.js';
 
 let baseDir = homedir();
 let __dirname = baseDir;

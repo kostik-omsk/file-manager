@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
-import messageErrors from '../../utils/messageErrors.js';
+import { messageErrors } from '../../utils/index.js';
 
 let __dirname = '';
 
