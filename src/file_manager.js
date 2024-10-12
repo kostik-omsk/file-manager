@@ -5,6 +5,7 @@ import { ls, up, cd } from './modules/navigation/index.js';
 import { cat, add, rn, cp, rm, mv } from './modules/BasicOperationsFiles/index.js';
 import osInfo from './modules/OSInfo/osInfo.js';
 import hachCalculation from './modules/hash/hach.js';
+import { compression, decompression } from './modules/compression/index.js';
 
 let baseDir = homedir();
 let __dirname = baseDir;
@@ -31,6 +32,8 @@ const commands = {
   mv: (moveFromTo) => mv(moveFromTo, __dirname),
   os: (param) => osInfo(param),
   hach: (fileToPath) => hachCalculation(fileToPath, __dirname),
+  compress: (pathFromTo) => compression(pathFromTo, __dirname),
+  decompress: (pathFromTo) => decompression(pathFromTo, __dirname),
 };
 
 rl.on('line', async (input) => {
@@ -45,6 +48,7 @@ rl.on('line', async (input) => {
         await commands[command]();
       }
     } catch (err) {
+      console.log('Error:', err.message);
       messageErrors('Operation failed');
     }
   } else {
@@ -54,5 +58,9 @@ rl.on('line', async (input) => {
 });
 
 rl.on('close', () => {
+  exitProgram(userName);
+});
+
+rl.on('SIGINT', () => {
   exitProgram(userName);
 });
