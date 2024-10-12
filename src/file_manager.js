@@ -48,7 +48,6 @@ rl.on('line', async (input) => {
         await commands[command]();
       }
     } catch (err) {
-      console.log('Error:', err.message);
       messageErrors('Operation failed');
     }
   } else {
