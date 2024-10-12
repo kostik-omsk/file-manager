@@ -1,21 +1,14 @@
-import path from 'path';
 import fs from 'fs/promises';
 import { messageErrors } from '../../utils/index.js';
 
-const getFileType = async (filePath) => {
-  const stats = await fs.stat(filePath);
-  return stats.isDirectory() ? 'directory' : 'file';
-};
 export async function ls(folderPath) {
   try {
     await fs.access(folderPath);
-    const files = await fs.readdir(folderPath);
-    const tableData = await Promise.all(
-      files.map(async (file) => ({
-        Name: file,
-        Type: await getFileType(path.join(folderPath, file)),
-      })),
-    );
+    const files = await fs.readdir(folderPath, { withFileTypes: true });
+    const tableData = files.map((file) => ({
+      Name: file.name,
+      Type: file.isDirectory() ? 'directory' : 'file',
+    }));
 
     tableData.sort((a, b) => {
       if (a.Type === 'directory' && b.Type === 'file') return -1;
