@@ -1,3 +1,6 @@
+# Ошибка в команде "hash", для проверки используйте "hach"
+# There is a typo in the command; "hash" -> "hach" 
+
 # File Manager
 
 ## Description
