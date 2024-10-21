@@ -6,9 +6,9 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "main": "index.js",
+  "main": "file_manager.js",
   "scripts": {
-    "start": "node src/index.js -- --username=Kostia"
+    "start": "node src/file_manager.js -- --username=Kostia"
   },
   "keywords": [],
   "author": "kostik-omsk",
