@@ -4,7 +4,7 @@ import { getUserName, exitProgram, currentDirectory, messageErrors } from './uti
 import { ls, up, cd } from './modules/navigation/index.js';
 import { cat, add, rn, cp, rm, mv } from './modules/BasicOperationsFiles/index.js';
 import osInfo from './modules/OSInfo/osInfo.js';
-import hachCalculation from './modules/hash/hach.js';
+import hashCalculation from './modules/hash/hash.js';
 import { compression, decompression } from './modules/compression/index.js';
 
 let baseDir = homedir();
@@ -31,7 +31,7 @@ const commands = {
   rm: (fileName) => rm(fileName, __dirname),
   mv: (moveFromTo) => mv(moveFromTo, __dirname),
   os: (param) => osInfo(param),
-  hach: (fileToPath) => hachCalculation(fileToPath, __dirname),
+  hash: (fileToPath) => hashCalculation(fileToPath, __dirname),
   compress: (pathFromTo) => compression(pathFromTo, __dirname),
   decompress: (pathFromTo) => decompression(pathFromTo, __dirname),
 };
